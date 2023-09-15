@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <script type="text/javascript">
+        function checkPassword() {
+            var password = document.getElementById('passwordInput').value;
+            if(password === "mypassword") {
+                document.getElementById('passwordSection').style.display = 'none';
+                document.getElementById('contentSection').style.display = 'block';
+            } else {
+                alert('Wrong password. Try again.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="passwordSection">
+        <h2>Enter Password to View Content</h2>
+        <input type="password" id="passwordInput">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div id="contentSection" style="display: none;">
+        <h1>Welcome to my protected content!</h1>
+        <!-- Your actual content goes here -->
+    </div>
+</body>
+</html>
 
