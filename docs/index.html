@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Protected Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcrypt.js/2.4.3/bcrypt.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,10 +35,15 @@
             text-decoration: none;
         }
     </style>
-    <script type="text/javascript">
+ <script type="text/javascript">
         function checkPassword() {
-            var password = document.getElementById('passwordInput').value;
-            if(password === "mypassword") {
+            const userEnteredPassword = document.getElementById('passwordInput').value;
+            
+            // Replace with the bcrypt hash you generated offline
+            const storedBcryptHash = "$2a$12$o9Ujr9hOYWnDW0p/uqLihe.1yG6/KLh2h7.tyziL6tj71aUo1jHFi
+";
+
+            if(bcrypt.compareSync(userEnteredPassword, storedBcryptHash)) {
                 document.getElementById('passwordSection').style.display = 'none';
                 document.getElementById('contentSection').style.display = 'block';
             } else {
