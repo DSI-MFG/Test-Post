@@ -34,23 +34,17 @@ async function fetchDownloads(owner, repo, folderPath) {
 }
 
 async function fetchReadme(owner, repo, folderPath) {
-  try {
-    const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${folderPath}/README.md`
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+  const response = await fetch(
+    "https://raw.githubusercontent.com/DSI-MFG/Test-Post/main/docs/README.md"
+  )
+    .then((response) => response.text())
+    .then((data) => {
+      // Convert markdown to HTML using Showdown
+      const converter = new showdown.Converter();
+      const htmlContent = converter.makeHtml(data);
 
-    const data = await response.json();
-    const decodedReadme = atob(data.content);
-
-    const readmeDiv = document.querySelector(".readme-section");
-    readmeDiv.innerHTML = `<h2>README</h2><pre>${decodedReadme}</pre>`;
-  } catch (error) {
-    console.error(
-      "There was a problem with the fetch operation:",
-      error.message
-    );
-  }
+      // Insert the converted HTML content to your page
+      document.querySelector(".readme-section").innerHTML = htmlContent;
+    })
+    .catch((error) => console.error("Error fetching README:", error));
 }

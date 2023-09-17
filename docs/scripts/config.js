@@ -1,5 +1,5 @@
 // config.js
 const CONFIG = {
   username: "DSI",
-  password: "DSI1186",
+  password: "dsi1186",
 };
