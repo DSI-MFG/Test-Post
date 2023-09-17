@@ -1,7 +1,8 @@
 function check(form) {
-  username = "DSI";
-  password = "DSI1186";
-  if (form.userid.value == username && form.pswrd.value == password) {
+  if (
+    form.userid.value == CONFIG.username &&
+    form.pswrd.value == CONFIG.password
+  ) {
     document.querySelector(".login-card").style.display = "none";
     document.querySelector(".content-card").style.display = "block";
     fetchDownloads("DSI-MFG", "Test-Post", "docs");
