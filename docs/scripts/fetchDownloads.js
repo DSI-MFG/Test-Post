@@ -2,22 +2,29 @@ const owner = "DSI-MFG";
 const repo = "Test-Post";
 const folderPath = "main/docs"; // Adjust accordingly
 
-fetch(`https://api.github.com/repos/${owner}/${repo}/tree/${folderPath}`)
-  .then((response) => response.json())
+console.log("Fetching repository contents...");
+
+fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${folderPath}`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(
+        `Error fetching repository contents: ${response.statusText}`
+      );
+    }
+    return response.json();
+  })
   .then((data) => {
+    if (!Array.isArray(data)) {
+      throw new Error("Expected data to be an array of repository contents");
+    }
     const cpsFiles = data.filter((file) => file.name.endsWith(".cps"));
-
-    const downloadsDiv = document.querySelector(".downloads");
     cpsFiles.forEach((file) => {
-      const anchor = document.createElement("a");
-      anchor.href = file.download_url;
-      anchor.innerText = `Download ${file.name}`;
-      downloadsDiv.appendChild(anchor);
-
-      // Add a line break for clarity
-      downloadsDiv.appendChild(document.createElement("br"));
+      console.log(file.name);
     });
   })
   .catch((error) => {
-    console.error("Error fetching repository contents:", error);
+    console.error(
+      "There was a problem with the fetch operation:",
+      error.message
+    );
   });
