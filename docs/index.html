@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Password Protect</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="login-card">
-        <h1>Password Protected Login</h1>
+      <img src="DSI.png" alt="DSI Logo" />
+      <h1>Fusion Post Hub</h1>
       <form>
         <script type="text/javascript" src="scripts/login.js"></script>
-        <input type="text" name="userid" placeholder="Username">
-        <input type="password" name="pswrd" placeholder="Password">
-        <input type="button" onclick="check(form)" name="login" class="login login-submit" value="Login">
+        <script type="text/javascript" src="scripts/fetchDownloads.js"></script>
+        <input type="text" name="userid" placeholder="Company Name" />
+        <input type="password" name="pswrd" placeholder="Password" />
+        <input
+          type="button"
+          onclick="check(form)"
+          name="login"
+          class="login login-submit"
+          value="Login"
+        />
       </form>
       <p></p>
       <div class="login-help">
-        <a href="register.html">Register</a> • <a href="forgot-password.html">Forgot Password</a>
+        <a href="forgot-password.html">Forgot Password</a>
+      </div>
+    </div>
+    <div class="content-card">
+      <img src="DSI.png" alt="DSI Logo" />
+      <h1>Fusion Post Hub</h1>
+
+      <div class="downloads">
+        <h2>Available Downloads</h2>
+        <div id="downloadLinks">
+          <!-- Links will be added here dynamically -->
+        </div>
+      </div>
+
+      <div class="readme-section">
+        <h2>README</h2>
+        <!-- Embed or fetch the README content here. This is just placeholder text. -->
+        <p>
+          This is the content of the README file. Update this section with the
+          actual content or embed it dynamically.
+        </p>
       </div>
     </div>
   </body>
@@ -24,7 +52,10 @@
     <center>
       <div class="container">
         <p>__________________________________</p>
-        <p>&copy; Michael Bateman. All rights reserved. <a href=mailto:info@michaelbateman.ca>Contact me</a>.</p>
+        <p>
+          &copy; DSI. All rights reserved.
+          <a href="mailto:support@dsi-mfg.com">Contact</a>.
+        </p>
       </div>
     </center>
   </footer>
